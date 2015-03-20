@@ -32,6 +32,7 @@ namespace Painter2
             //Console.WriteLine("Loading Content");
 
             gameStateManager.AddGameState("playingState", new PainterGameWorld());
+            gameStateManager.AddGameState("gameoverState", new GameOver());
             gameStateManager.SwitchTo("playingState");
 
             AssetManager.PlayMusic("snd_music");

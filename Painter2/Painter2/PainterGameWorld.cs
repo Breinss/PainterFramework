@@ -20,7 +20,7 @@ namespace Painter2
         private ThreeColorGameObject can1 = null, can2 = null, can3 = null;
         private Ball ball = null;
         private SpriteGameObject scoreBar;
-        private SpriteGameObject gameOver;
+        
         public TextGameObject scoreText;
         public GameObjectList livesSprites;
         public int maxLives;
@@ -35,7 +35,7 @@ namespace Painter2
             cannonBarrel.Origin = new Vector2(34, 34);
 
             cannonColor = new ThreeColorGameObject("spr_cannon_red", "spr_cannon_green", "spr_cannon_blue");
-            cannonColor.Position = new Vector2(58,388);
+            cannonColor.Position = new Vector2(50,398);
 
             can1 = new PaintCan(450f, Color.Red);
             can2 = new PaintCan(575f, Color.Green);
@@ -50,7 +50,6 @@ namespace Painter2
 
             maxLives = 5;
 
-            gameOver = new SpriteGameObject("spr_gameover");
             //add background sprite game object to the gameworld
             this.Add(background);
             
@@ -74,9 +73,7 @@ namespace Painter2
             this.Add(scoreBar);
             this.Add(scoreText);
 
-            //add GameOver
-            this.Add(gameOver);
-            gameOver.Visible = false;
+            
             //add sprites to livesSprites list
             for (int lifeNr = 0; lifeNr < maxLives; lifeNr++)
             {
@@ -87,7 +84,6 @@ namespace Painter2
             this.Add(livesSprites);
 
             scoreText.Position = scoreBar.Position + (scoreBar.Center - scoreText.Size/2);
-            gameOver.Position = new Vector2(Painter.Screen.X/6,Painter.Screen.Y/5);
 
         }
 
@@ -122,7 +118,8 @@ namespace Painter2
                     lives = value;
                 if (lives <= 0)
                 {
-                    gameOver.Visible = true;
+                    Painter.GameStateManager.SwitchTo("gameoverState");
+                    Reset();
                 }
                 }
           
@@ -137,8 +134,6 @@ namespace Painter2
         {
             this.Score = 0;
             this.Lives = 5;
-            gameOver.Visible = false;
-            //base.Reset();
         }
 
         public override void HandleInput(InputHelper inputHelper)
@@ -160,13 +155,6 @@ namespace Painter2
             if (inputHelper.MouseLeftButtonDown() && !ball.Shooting)
             {
                 ball.Shoot(inputHelper,cannonColor,cannonBarrel);
-            }
-            if (gameOver.Visible)
-            {
-                if (inputHelper.KeyPressed(Keys.Space))
-                {
-                    Reset();
-                }
             }
         }
 

@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Painter2", "Painter2\Painte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Painter2Content", "Painter2\Painter2Content\Painter2Content.contentproj", "{730C77F8-437E-4F01-B38A-DB9EB2889B79}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameManagement", "..\..\..\..\Downloads\GameManagement\GameManagement\GameManagement.csproj", "{6CEB5F37-0BFA-4A0D-8DB7-B25ECD81CAAE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameManagement", "..\..\Downloads\GameManagement\GameManagement\GameManagement.csproj", "{6CEB5F37-0BFA-4A0D-8DB7-B25ECD81CAAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
